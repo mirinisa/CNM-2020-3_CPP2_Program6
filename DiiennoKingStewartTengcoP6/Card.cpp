@@ -9,6 +9,10 @@ Card::Card()
 // in the deck; calculate which card it is in
 // this constructor (initialize points value,
 // face value/type and suit)
+iValue = n % 13 + 1;
+    if (iValue > 10) {
+        iValue == 10;
+    }
 Card::Card(int n)
 {
 	/* Testing */
@@ -35,4 +39,7 @@ Card::Card(int n)
 		suit = "D";
 		break;
 	}
+	stringstream ss;
+	ss << iValue << "-" << suit;
+	string result(ss.str());
 }

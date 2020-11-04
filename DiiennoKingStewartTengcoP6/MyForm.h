@@ -1,5 +1,5 @@
 /* Group 3:
- *   Donald Dilenno
+ *   Donald Diienno
  *   Christopher (Sean) King
  *   Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
  * CIS 2275-R01: C++ 2 Fall 2020
@@ -14,7 +14,7 @@
 
 #include "Hand.h"
 
-namespace DilennoKingStewartTengcoP6 {
+namespace DiiennoKingStewartTengcoP6 {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -107,7 +107,7 @@ namespace DilennoKingStewartTengcoP6 {
 			// msFileRules
 			// 
 			this->msFileRules->Name = L"msFileRules";
-			this->msFileRules->Size = System::Drawing::Size(180, 22);
+			this->msFileRules->Size = System::Drawing::Size(170, 22);
 			this->msFileRules->Text = L"Rules of the Game";
 			this->msFileRules->ToolTipText = L"Click to see the game rules.";
 			this->msFileRules->Click += gcnew System::EventHandler(this, &MyForm::msFileRules_Click);
@@ -122,7 +122,7 @@ namespace DilennoKingStewartTengcoP6 {
 			this->MainMenuStrip = this->msRules;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Dilenno, King, Stewart-Tengco Project 6: Blackjack";
+			this->Text = L"Diienno, King, Stewart-Tengco Project 6: Blackjack";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->msRules->ResumeLayout(false);
 			this->msRules->PerformLayout();

@@ -1,5 +1,5 @@
 /* Group 3:
- *   Donald Dilenno
+ *   Donald Diienno
  *   Christopher (Sean) King
  *   Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
  * CIS 2275-R01: C++ 2 Fall 2020
@@ -22,6 +22,6 @@ void Main()
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	DilennoKingStewartTengcoP6 ::MyForm form;
+	DiiennoKingStewartTengcoP6 ::MyForm form;
 	Application::Run(% form);
 }

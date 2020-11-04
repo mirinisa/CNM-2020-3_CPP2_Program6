@@ -1,5 +1,14 @@
+/* Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
+ * CIS 2275-R01: C++ 2 Fall 2020
+ * Project: Program 6, Blackjack
+ *
+ * File: Logger.h
+ * Purpose: Create log of game outcome (header file)
+ * Last modified: 3 Nov 2020
+ */
+
 #ifndef _LOGGER_H
-#define _lOGGER_H
+#define _LOGGER_H
 
 #include <string>
 #include <fstream>
@@ -30,12 +39,9 @@ private:
 
 
 
-/* For the event handlers 
-Remember to create Game myGame; near Summary for MyForm
+/* Mirinisa's notes from class 10/29
 
-Rules of the game menu item:
-	String^ message = "     ";
-	MessageBox::Show(message);
+Remember to create Game myGame; near Summary for MyForm
 
 Bet:
 	Initialize the game

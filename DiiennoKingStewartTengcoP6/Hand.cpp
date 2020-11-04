@@ -1,5 +1,5 @@
 /* Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
- * CIS 2275-R01: C++ 2
+ * CIS 2275-R01: C++ 2 Fall 2020
  * Project: Program 6, Blackjack
  * 
  * File: Hand.cpp

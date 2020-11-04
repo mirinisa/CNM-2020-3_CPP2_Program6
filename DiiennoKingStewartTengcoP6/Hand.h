@@ -1,3 +1,12 @@
+/* Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
+ * CIS 2275-R01: C++ 2 Fall 2020
+ * Project: Program 6, Blackjack
+ *
+ * File: Hand.h
+ * Purpose: Construct a hand of cards (header file)
+ * Last modified: 3 Nov 2020
+ */
+
 #ifndef _HAND_H
 #define _HAND_H
 

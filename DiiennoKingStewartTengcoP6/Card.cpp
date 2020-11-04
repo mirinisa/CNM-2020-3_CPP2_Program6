@@ -5,12 +5,13 @@ Card::Card()
 
 }
 
+// n is integer 0-51 corresponding to position
+// in the deck; calculate which card it is in
+// this constructor (initialize points value,
+// face value/type and suit)
 Card::Card(int n)
 {
-	// n is integer 0-51 corresponding to position
-	// in the deck; calculate which card it is here
-	// (points value, face value/type and suit)
-
+	/* Testing */
 	switch (n)
 	{
 	case 0:

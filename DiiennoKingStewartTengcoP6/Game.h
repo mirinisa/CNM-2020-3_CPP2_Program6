@@ -10,7 +10,11 @@ class Game
 public:
 	Game();
 	bool SetBet(int b);
-	// pass-through methods
+	void InitialDeal();
+	string ShowPlayerHand() { return playersHand.Show(false, false); }
+	string ShowDealersHand(bool hide) { return dealersHand.Show(true, hide); }
+	bool isBlackJack() { return playersHand.BlackJack(); }
+	bool PlayerBusted() { return playersHand.Busted(); }
 	bool PlayerContinues();
 	void PlayerHits();
 	string PlayerWins();

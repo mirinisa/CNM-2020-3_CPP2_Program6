@@ -18,10 +18,13 @@ bool Game::SetBet(int b)
 	}
 }
 
-// pass-through methods
+void Game::InitialDeal()
+{
+}
 
 bool Game::PlayerContinues()
 {
+
 	return false;
 }
 

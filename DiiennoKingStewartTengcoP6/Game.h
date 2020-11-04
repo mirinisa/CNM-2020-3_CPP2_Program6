@@ -9,7 +9,7 @@ class Game
 {
 public:
 	Game();
-	bool SetBet();
+	bool SetBet(int b);
 	// pass-through methods
 	bool PlayerContinues();
 	void PlayerHits();

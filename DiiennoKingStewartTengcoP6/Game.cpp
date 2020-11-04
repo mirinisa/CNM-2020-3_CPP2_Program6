@@ -5,9 +5,17 @@ Game::Game()
 
 }
 
-bool Game::SetBet()
+bool Game::SetBet(int b)
 {
-	return false;
+	// If bet is less than 0 or bet is greater than money, return false.
+	if (b < 0 || b > money) {
+		return false;
+	}
+	// Otherwise, return true.
+	else {
+		bet = b;
+		return true;
+	}
 }
 
 // pass-through methods

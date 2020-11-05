@@ -1,13 +1,14 @@
 #include "Deck.h"
-
+#include<chrono>
 Deck::Deck()
 {
 	//seed the random_engine object
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::shuffle(this->cards.begin(), this->cards.end(), std::default_random_engine(seed));
+	topCard = 0;
     //initialize the cards from 0 to 51
     for (int i = 0; i < 51; i++) {
-        cards[i];
+        cards[i] = i;
     }
     //shuffle
     Shuffle();
@@ -31,7 +32,7 @@ int Deck::RandomCard()
 	//returns a random int using uniform distributuion
     //needs more work
     uniform_int_distribution<int> distribution(0, 51);
-	return 0;
+	return distribution(engine);
 }
 
 void Deck::Deal(Card& c)

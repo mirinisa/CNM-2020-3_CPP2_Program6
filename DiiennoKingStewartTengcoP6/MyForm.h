@@ -50,8 +50,10 @@ namespace DiiennoKingStewartTengcoP6 {
 		}
 
 	private: System::Windows::Forms::MenuStrip^ msRules;
-	private: System::Windows::Forms::ToolStripMenuItem^ msDropDownFile;
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ msFileRules;
+
 
 	protected:
 
@@ -75,7 +77,6 @@ namespace DiiennoKingStewartTengcoP6 {
 		void InitializeComponent(void)
 		{
 			this->msRules = (gcnew System::Windows::Forms::MenuStrip());
-			this->msDropDownFile = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->msFileRules = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->msRules->SuspendLayout();
 			this->SuspendLayout();
@@ -84,7 +85,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			this->msRules->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->msRules->ImageScalingSize = System::Drawing::Size(22, 22);
-			this->msRules->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msDropDownFile });
+			this->msRules->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msFileRules });
 			this->msRules->Location = System::Drawing::Point(0, 0);
 			this->msRules->Name = L"msRules";
 			this->msRules->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
@@ -92,17 +93,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->msRules->TabIndex = 1;
 			this->msRules->Text = L"menuStrip1";
 			// 
-			// msDropDownFile
-			// 
-			this->msDropDownFile->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msFileRules });
-			this->msDropDownFile->Name = L"msDropDownFile";
-			this->msDropDownFile->Size = System::Drawing::Size(51, 27);
-			this->msDropDownFile->Text = L"File";
-			// 
 			// msFileRules
 			// 
 			this->msFileRules->Name = L"msFileRules";
-			this->msFileRules->Size = System::Drawing::Size(244, 30);
+			this->msFileRules->Size = System::Drawing::Size(166, 27);
 			this->msFileRules->Text = L"Rules of the Game";
 			this->msFileRules->ToolTipText = L"Click to see the game rules.";
 			this->msFileRules->Click += gcnew System::EventHandler(this, &MyForm::msFileRules_Click);

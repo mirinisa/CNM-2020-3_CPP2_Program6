@@ -4,7 +4,7 @@
  *
  * File: Logger.h
  * Purpose: Create log of game outcome (header file)
- * Last modified: 3 Nov 2020
+ * Last modified: 5 Nov 2020
  */
 
 #ifndef _LOGGER_H
@@ -18,13 +18,13 @@ class Logger
 {
 public:
 	Logger();
-	void StartLog(double initialBal);
+	void StartLog(double initialBalance);
 	void WriteLog(string s);
 	void CloseLog(string s);
 	bool IsLogOpen() const { return bLogOpen; }
 private:
 	string filename;
-	bool bLogOpen;
+	bool bLogOpen{ false };
 	string timeRightNow;
 	string dateTimeRightNow;
 	ofstream output;
@@ -39,9 +39,7 @@ private:
 
 
 
-/* Mirinisa's notes from class 10/29
-
-Remember to create Game myGame; near Summary for MyForm
+/* Mirinisa's notes from class 10/29 11/3
 
 Bet:
 	Initialize the game
@@ -61,4 +59,32 @@ Bet:
 
 	if bet is not valid:
 	put in status box that the bet is not valid and make them do it over
+
+
+Hit button:
+	if player can contniue
+		mygame.PlayerHits();
+		Show card in hand
+
+	If player is busted, 
+		show result in status box
+
+Stay button:
+	Switch to Dealer. Dealer must hit until busted or over 16
+	While mygame.DealerContinues(),
+		display dealer's hand
+
+Play again button:
+	clear text boxes
+	reset anything else to beginning status
+	make correct groups visible/invisible
+
+Quit button:
+	mygame.endgame()
+	Application::Exit();
+
+
+Form load event:
+	check if log was opened
+	if not, report but don't quit
 */

@@ -6,13 +6,13 @@
  * Project: Program 6, Blackjack
  * 
  * File: MyForm.h
- * Last modified: 3 Nov 2020
+ * Last modified: 5 Nov 2020
 */
 
 
 #pragma once
 
-#include "Hand.h"
+#include "Game.h"
 
 namespace DiiennoKingStewartTengcoP6 {
 
@@ -132,17 +132,17 @@ namespace DiiennoKingStewartTengcoP6 {
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
-		/* Testing */
-		Hand hand;
-		hand.AddCard(0);
-		hand.AddCard(2);
-		hand.AddCard(3);
 
-		tbTest->Text = gcnew String(hand.Show(false, false).c_str());
 	}
 	private: System::Void msFileRules_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ rules = "Rules of the game:\r\nStart with 2 cards. Each card value is the face number value for 2-9; Jack-King are 10 points each; Aces can be 1 or 11 depending on what works better.";
+		String^ rules = "Rules of the game:";
+		rules += "\r\n\nThe goal is to get to 21 points without going over (busting). Cards 2-9 are worth their face value, Jack-King are 10 points each, and Aces can be 1 or 11 depending on what works better.";
+		rules += "\r\n\nTo start, you and the dealer are both dealt two cards. The dealer shows one of the cards. You may opt to \"hit\" to be dealt more cards until you either have twelve cards in your hand or you bust.";
+		rules += "\r\n\nYou do not have to hit, regardless of the number of points you hold. The dealer is required to hit if their hand is 16 points or less.";
+		rules += "\r\n\nEach round, you are allowed to bet as much money as you currently have. If either player goes over 21 points, they bust and lose that round and any money bet. If neither player busts, the one with a hand closer to 21 wins.";
+		rules += "\r\nIf there is a tie, you get your money back. If you hit 21 points exactly, you win that round. If you have 21 points with just 2 cards, you achieved \"Blackjack\" and you get 1.5x the money on the table!";
+		rules += "\r\n\nHave fun!";
+
 		MessageBox::Show(rules);
 	}
 };

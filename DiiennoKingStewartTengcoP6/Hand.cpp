@@ -4,7 +4,7 @@
  * 
  * File: Hand.cpp
  * Purpose: Construct a hand of cards
- * Last modified: 3 Nov 2020
+ * Last modified: 5 Nov 2020
  */
 
 
@@ -232,8 +232,6 @@ bool Hand::Busted()
 // and set number of cards to 0
 void Hand::ClearHand()
 {
-	// delete all cards from array
-	cards.fill(Card());
 	// reset string
 	showHand = "";
 	// reset number of cards
@@ -241,17 +239,8 @@ void Hand::ClearHand()
 }
 
 
-// sum card values in hand
-//int Hand::SumPoints()
-//{
-//	int handTotal{ 0 };
-//	for (int i = 0; i < numCards; ++i)
-//	{
-//		handTotal += cards[i].GetIValue();
-//	}
-//	return handTotal;
-//}
-
+// overloaded method that tests if a specific 
+// score is busted (called in BestScore)
 bool Hand::Busted(int score)
 {
 	return (score > 21);

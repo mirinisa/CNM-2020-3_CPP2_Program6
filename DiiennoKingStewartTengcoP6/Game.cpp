@@ -43,7 +43,18 @@ void Game::PlayerHits()
 
 string Game::PlayerWins()
 {
-	return "";
+	int winnings{ bet };
+
+	if (playersHand.BlackJack())
+		winnings = 1.5 * bet;
+
+	money += winnings;
+	wins += 1;
+	stringstream ss;
+	ss << "Player wins: " << winnings
+		<< "\r\nPlayer now has $" << money;
+	string ss_str = ss.str();
+	return ss_str;
 }
 
 bool Game::DealerContinues()
@@ -60,12 +71,22 @@ bool Game::DealerContinues()
 
 string Game::DealerWins()
 {
-	return "";
+	money -= bet;
+	losses += 1;
+	stringstream ss;
+	ss << "Player loses: " << bet
+		<< "\r\nPlayer now has $" << money;
+	string ss_str = ss.str();
+	return ss_str;
 }
 
 string Game::Tie()
 {
-	return "";
+	stringstream ss;
+	ss << "tie"
+		<< "\r\nPlayer now has $" << money;
+	string ss_str = ss.str();
+	return ss_str;
 }
 
 string Game::ShowResults()
@@ -75,7 +96,7 @@ string Game::ShowResults()
 	}
 	else if (playersHand.Busted()
 		|| playersHand.BestScore() < dealersHand.BestScore()) {
-		DealerWins();
+		return DealerWins();
 	}
 	else if (dealersHand.Busted()
 		|| playersHand.BestScore() >= dealersHand.BestScore()) {

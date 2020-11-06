@@ -2,6 +2,7 @@
 #include "Hand.h"
 #include "Logger.h"
 #include <string>
+#include <sstream>
 using namespace std;
 
 

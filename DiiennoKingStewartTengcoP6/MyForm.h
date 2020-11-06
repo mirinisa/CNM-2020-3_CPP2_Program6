@@ -52,7 +52,7 @@ namespace DiiennoKingStewartTengcoP6 {
 	private: System::Windows::Forms::MenuStrip^ msRules;
 	private: System::Windows::Forms::ToolStripMenuItem^ msDropDownFile;
 	private: System::Windows::Forms::ToolStripMenuItem^ msFileRules;
-	private: System::Windows::Forms::TextBox^ tbTest;
+
 	protected:
 
 	protected:
@@ -77,12 +77,12 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->msRules = (gcnew System::Windows::Forms::MenuStrip());
 			this->msDropDownFile = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->msFileRules = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->tbTest = (gcnew System::Windows::Forms::TextBox());
 			this->msRules->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// msRules
 			// 
+			this->msRules->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->msRules->ImageScalingSize = System::Drawing::Size(22, 22);
 			this->msRules->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msDropDownFile });
 			this->msRules->Location = System::Drawing::Point(0, 0);
@@ -102,20 +102,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			// msFileRules
 			// 
 			this->msFileRules->Name = L"msFileRules";
-			this->msFileRules->Size = System::Drawing::Size(252, 30);
+			this->msFileRules->Size = System::Drawing::Size(244, 30);
 			this->msFileRules->Text = L"Rules of the Game";
 			this->msFileRules->ToolTipText = L"Click to see the game rules.";
 			this->msFileRules->Click += gcnew System::EventHandler(this, &MyForm::msFileRules_Click);
-			// 
-			// tbTest
-			// 
-			this->tbTest->BackColor = System::Drawing::Color::OliveDrab;
-			this->tbTest->Location = System::Drawing::Point(22, 35);
-			this->tbTest->Margin = System::Windows::Forms::Padding(4);
-			this->tbTest->Multiline = true;
-			this->tbTest->Name = L"tbTest";
-			this->tbTest->Size = System::Drawing::Size(782, 353);
-			this->tbTest->TabIndex = 0;
 			// 
 			// MyForm
 			// 
@@ -123,10 +113,9 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::OliveDrab;
 			this->ClientSize = System::Drawing::Size(831, 410);
-			this->Controls->Add(this->tbTest);
 			this->Controls->Add(this->msRules);
 			this->MainMenuStrip = this->msRules;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Diienno, King, Stewart-Tengco Project 6: Blackjack";

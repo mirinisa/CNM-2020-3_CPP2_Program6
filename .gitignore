@@ -339,3 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 *.txt
+
+# Game log files
+DiiennoKingStewartTengcoP6/Log_*.txt

@@ -23,6 +23,7 @@ namespace DiiennoKingStewartTengcoP6 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	Game mygame;
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
@@ -35,6 +36,9 @@ namespace DiiennoKingStewartTengcoP6 {
 			//
 			//TODO: Add the constructor code here
 			//
+			lblHitOrStay->Visible = false;
+			btnHit->Visible = false;
+			btnStay->Visible = false;
 		}
 
 	protected:

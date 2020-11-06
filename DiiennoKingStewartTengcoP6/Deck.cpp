@@ -6,8 +6,8 @@ Deck::Deck()
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::shuffle(this->cards.begin(), this->cards.end(), std::default_random_engine(seed));
 	topCard = 0;
-    //initialize the cards from 0 to 51
-    for (int i = 0; i < 51; i++) {
+    //initialize the cards from 0 to 52
+    for (int i = 0; i < 52; i++) {
         cards[i] = i;
     }
     //shuffle
@@ -16,14 +16,9 @@ Deck::Deck()
 
 void Deck::Shuffle()
 {
-	for (int i = 0; i < (52 - 1); i++) {
-        int j = i + (rand() % (52 - i));
+	for (int i = 0; i < 52; i++) {
+        int j = i + (RandomCard() % (52 - i));
         swap(cards[i], cards[j]);
-
-        //if both cards are the same reshuffle again
-        if (i == j) {
-            Shuffle(); 
-        }
 	}
 }
 
@@ -31,13 +26,13 @@ int Deck::RandomCard()
 {
 	//returns a random int using uniform distributuion
     //needs more work
-    uniform_int_distribution<int> distribution(0, 51);
+    uniform_int_distribution<int> distribution(1, 51);
 	return distribution(engine);
 }
 
 void Deck::Deal(Card& c)
 {
-	 Card deal;
+	Card deal;
     deal = cards[topCard];
     topCard++;
     if (topCard <= 34) {

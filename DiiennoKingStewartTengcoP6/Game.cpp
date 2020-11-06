@@ -21,8 +21,11 @@ bool Game::SetBet(int b)
 void Game::InitialDeal()
 {
 	for (int i = 0; i < 2; ++i) {
-		playersHand.AddCard(deck.RandomCard());
-		dealersHand.AddCard(deck.RandomCard());
+		Card c1, c2;
+		deck.Deal(c1);
+		deck.Deal(c2);
+		playersHand.AddCard(c1);
+		dealersHand.AddCard(c2);
 	}
 }
 
@@ -38,7 +41,9 @@ bool Game::PlayerContinues()
 
 void Game::PlayerHits()
 {
-	playersHand.AddCard(deck.RandomCard());
+	Card c;
+	deck.Deal(c);
+	playersHand.AddCard(c);
 }
 
 string Game::PlayerWins()
@@ -61,7 +66,9 @@ bool Game::DealerContinues()
 {
 	// If the dealer must hit, add a card to the dealer's hand and continue
 	if (dealersHand.MustHit()) {
-		dealersHand.AddCard(deck.RandomCard());
+		Card c;
+		deck.Deal(c);
+		dealersHand.AddCard(c);
 		return true;
 	}
 

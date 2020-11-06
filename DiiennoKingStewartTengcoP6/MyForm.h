@@ -48,10 +48,11 @@ namespace DiiennoKingStewartTengcoP6 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ tbTest;
+
 	private: System::Windows::Forms::MenuStrip^ msRules;
 	private: System::Windows::Forms::ToolStripMenuItem^ msDropDownFile;
 	private: System::Windows::Forms::ToolStripMenuItem^ msFileRules;
+	private: System::Windows::Forms::TextBox^ tbTest;
 	protected:
 
 	protected:
@@ -73,27 +74,21 @@ namespace DiiennoKingStewartTengcoP6 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->tbTest = (gcnew System::Windows::Forms::TextBox());
 			this->msRules = (gcnew System::Windows::Forms::MenuStrip());
 			this->msDropDownFile = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->msFileRules = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->tbTest = (gcnew System::Windows::Forms::TextBox());
 			this->msRules->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// tbTest
-			// 
-			this->tbTest->Location = System::Drawing::Point(12, 27);
-			this->tbTest->Multiline = true;
-			this->tbTest->Name = L"tbTest";
-			this->tbTest->Size = System::Drawing::Size(260, 222);
-			this->tbTest->TabIndex = 0;
-			// 
 			// msRules
 			// 
+			this->msRules->ImageScalingSize = System::Drawing::Size(22, 22);
 			this->msRules->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msDropDownFile });
 			this->msRules->Location = System::Drawing::Point(0, 0);
 			this->msRules->Name = L"msRules";
-			this->msRules->Size = System::Drawing::Size(284, 24);
+			this->msRules->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+			this->msRules->Size = System::Drawing::Size(831, 31);
 			this->msRules->TabIndex = 1;
 			this->msRules->Text = L"menuStrip1";
 			// 
@@ -101,25 +96,37 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			this->msDropDownFile->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->msFileRules });
 			this->msDropDownFile->Name = L"msDropDownFile";
-			this->msDropDownFile->Size = System::Drawing::Size(37, 20);
+			this->msDropDownFile->Size = System::Drawing::Size(51, 27);
 			this->msDropDownFile->Text = L"File";
 			// 
 			// msFileRules
 			// 
 			this->msFileRules->Name = L"msFileRules";
-			this->msFileRules->Size = System::Drawing::Size(170, 22);
+			this->msFileRules->Size = System::Drawing::Size(252, 30);
 			this->msFileRules->Text = L"Rules of the Game";
 			this->msFileRules->ToolTipText = L"Click to see the game rules.";
 			this->msFileRules->Click += gcnew System::EventHandler(this, &MyForm::msFileRules_Click);
 			// 
+			// tbTest
+			// 
+			this->tbTest->BackColor = System::Drawing::Color::OliveDrab;
+			this->tbTest->Location = System::Drawing::Point(22, 35);
+			this->tbTest->Margin = System::Windows::Forms::Padding(4);
+			this->tbTest->Multiline = true;
+			this->tbTest->Name = L"tbTest";
+			this->tbTest->Size = System::Drawing::Size(782, 353);
+			this->tbTest->TabIndex = 0;
+			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->BackColor = System::Drawing::Color::OliveDrab;
+			this->ClientSize = System::Drawing::Size(831, 410);
 			this->Controls->Add(this->tbTest);
 			this->Controls->Add(this->msRules);
 			this->MainMenuStrip = this->msRules;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Diienno, King, Stewart-Tengco Project 6: Blackjack";

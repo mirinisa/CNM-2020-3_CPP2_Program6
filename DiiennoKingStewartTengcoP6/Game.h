@@ -2,6 +2,7 @@
 #include "Hand.h"
 #include "Logger.h"
 #include <string>
+#include <sstream>
 using namespace std;
 
 
@@ -9,8 +10,12 @@ class Game
 {
 public:
 	Game();
-	bool SetBet();
-	// pass-through methods
+	bool SetBet(int b);
+	void InitialDeal();
+	string ShowPlayerHand() { return playersHand.Show(false, false); }
+	string ShowDealersHand(bool hide) { return dealersHand.Show(true, hide); }
+	bool isBlackJack() { return playersHand.BlackJack(); }
+	bool PlayerBusted() { return playersHand.Busted(); }
 	bool PlayerContinues();
 	void PlayerHits();
 	string PlayerWins();

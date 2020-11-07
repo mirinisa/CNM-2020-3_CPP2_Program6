@@ -32,8 +32,7 @@ int Deck::RandomCard()
 
 void Deck::Deal(Card& c)
 {
-	Card deal;
-    deal = cards[topCard];
+	c = cards[topCard];
     topCard++;
     if (topCard <= 34) {
         Shuffle();

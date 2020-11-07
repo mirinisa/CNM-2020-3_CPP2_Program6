@@ -31,8 +31,8 @@ void Game::InitialDeal()
 
 bool Game::PlayerContinues()
 {
-	// If the player's hand is busted and the score is under 22, continue.
-	if (playersHand.Busted() && playersHand.Under(22))
+	// If the player's hand is not busted and the score is under 22, continue.
+	if (!playersHand.Busted() && playersHand.Under(22))
 		return true;
 
 	// Otherwise, the player doesn't continue.
@@ -41,20 +41,27 @@ bool Game::PlayerContinues()
 
 void Game::PlayerHits()
 {
+	// Create empty card object
 	Card c;
+	// Deal from the deck into the empty card object
 	deck.Deal(c);
+	// Add the card to the player's hand.
 	playersHand.AddCard(c);
 }
 
 string Game::PlayerWins()
 {
+	// Initialize the winnings variable to bet.
 	double winnings{ double(bet) };
 
+	// If the player's hand is a Black Jack,
 	if (playersHand.BlackJack())
 		winnings = 1.5 * bet;
 
+	// Add the winnings to money and increase wins by 1.
 	money += winnings;
 	wins += 1;
+	// Return results string
 	stringstream ss;
 	ss << "Player wins: " << winnings
 		<< "\r\nPlayer now has $" << money;

@@ -14,6 +14,7 @@ bool Game::SetBet(int b)
 	// Otherwise, return true.
 	else {
 		bet = b;
+		numberOfHands += 2;
 		return true;
 	}
 }

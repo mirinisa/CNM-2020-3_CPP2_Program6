@@ -26,7 +26,7 @@ int Deck::RandomCard()
 {
 	//returns a random int using uniform distributuion
     //needs more work
-    uniform_int_distribution<int> distribution(1, 51);
+    uniform_int_distribution<int> distribution(0, 51);
 	return distribution(engine);
 }
 

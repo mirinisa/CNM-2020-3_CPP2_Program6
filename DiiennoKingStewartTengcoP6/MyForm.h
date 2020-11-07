@@ -39,6 +39,8 @@ namespace DiiennoKingStewartTengcoP6 {
 			lblHitOrStay->Visible = false;
 			btnHit->Visible = false;
 			btnStay->Visible = false;
+			if (!mygame.IsLogOpened())
+				txtGameStatus->Text = "No log file is being written to. But we can still play the game.";
 		}
 
 	protected:
@@ -193,10 +195,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			// txtPlayersHand
 			// 
 			this->txtPlayersHand->BackColor = System::Drawing::Color::White;
-			this->txtPlayersHand->Enabled = false;
 			this->txtPlayersHand->Location = System::Drawing::Point(100, 327);
 			this->txtPlayersHand->Multiline = true;
 			this->txtPlayersHand->Name = L"txtPlayersHand";
+			this->txtPlayersHand->ReadOnly = true;
 			this->txtPlayersHand->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->txtPlayersHand->Size = System::Drawing::Size(358, 163);
 			this->txtPlayersHand->TabIndex = 6;
@@ -230,10 +232,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			// txtDealersHand
 			// 
 			this->txtDealersHand->BackColor = System::Drawing::Color::White;
-			this->txtDealersHand->Enabled = false;
 			this->txtDealersHand->Location = System::Drawing::Point(100, 551);
 			this->txtDealersHand->Multiline = true;
 			this->txtDealersHand->Name = L"txtDealersHand";
+			this->txtDealersHand->ReadOnly = true;
 			this->txtDealersHand->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->txtDealersHand->Size = System::Drawing::Size(358, 183);
 			this->txtDealersHand->TabIndex = 9;
@@ -241,10 +243,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			// txtGameStatus
 			// 
 			this->txtGameStatus->BackColor = System::Drawing::Color::White;
-			this->txtGameStatus->Enabled = false;
 			this->txtGameStatus->Location = System::Drawing::Point(582, 551);
 			this->txtGameStatus->Multiline = true;
 			this->txtGameStatus->Name = L"txtGameStatus";
+			this->txtGameStatus->ReadOnly = true;
 			this->txtGameStatus->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->txtGameStatus->Size = System::Drawing::Size(358, 183);
 			this->txtGameStatus->TabIndex = 10;
@@ -283,7 +285,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->lblHitOrStay->ForeColor = System::Drawing::Color::White;
 			this->lblHitOrStay->Location = System::Drawing::Point(576, 314);
 			this->lblHitOrStay->Name = L"lblHitOrStay";
-			this->lblHitOrStay->Size = System::Drawing::Size(156, 34);
+			this->lblHitOrStay->Size = System::Drawing::Size(165, 35);
 			this->lblHitOrStay->TabIndex = 13;
 			this->lblHitOrStay->Text = L"Hit or Stay\?";
 			// 

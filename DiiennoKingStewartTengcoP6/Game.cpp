@@ -32,7 +32,7 @@ void Game::InitialDeal()
 bool Game::PlayerContinues()
 {
 	// If the player's hand is busted and the score is under 22, continue.
-	if (playersHand.Busted() && playersHand.BestScore() < 22)
+	if (playersHand.Busted() && playersHand.Under(22))
 		return true;
 
 	// Otherwise, the player doesn't continue.
@@ -48,7 +48,7 @@ void Game::PlayerHits()
 
 string Game::PlayerWins()
 {
-	int winnings{ bet };
+	double winnings{ double(bet) };
 
 	if (playersHand.BlackJack())
 		winnings = 1.5 * bet;
@@ -89,6 +89,7 @@ string Game::DealerWins()
 
 string Game::Tie()
 {
+	ties += 1;
 	stringstream ss;
 	ss << "tie"
 		<< "\r\nPlayer now has $" << money;
@@ -98,20 +99,23 @@ string Game::Tie()
 
 string Game::ShowResults()
 {
+	string results;
 	if (playersHand.Busted() && dealersHand.Busted()) {
-		return Tie();
+		results = Tie();
 	}
 	else if (playersHand.Busted()
 		|| playersHand.BestScore() < dealersHand.BestScore()) {
-		return DealerWins();
+		results = DealerWins();
 	}
 	else if (dealersHand.Busted()
 		|| playersHand.BestScore() >= dealersHand.BestScore()) {
-		return PlayerWins();
+		results = PlayerWins();
 	}
 	else {
 		return "";
 	}
+	log.WriteLog(results);
+	return results;
 }
 
 void Game::ClearHands()
@@ -122,6 +126,11 @@ void Game::ClearHands()
 
 void Game::EndGame()
 {
-	string summary;
+	stringstream ss;
+	ss << "Player wins: " << wins
+		<< "\nDealer wins: " << losses
+		<< "\nTies: " << ties
+		<< "\nNumber of hands: " << numberOfHands;
+	string summary = ss.str();
 	log.CloseLog(summary);
 }

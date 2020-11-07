@@ -39,8 +39,6 @@ namespace DiiennoKingStewartTengcoP6 {
 			lblHitOrStay->Visible = false;
 			btnHit->Visible = false;
 			btnStay->Visible = false;
-			if (!mygame.IsLogOpened())
-				txtGameStatus->Text = "No log file is being written to. But we can still play the game.";
 		}
 
 	protected:
@@ -191,6 +189,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnBet->TabIndex = 5;
 			this->btnBet->Text = L"BET";
 			this->btnBet->UseVisualStyleBackColor = false;
+			this->btnBet->Click += gcnew System::EventHandler(this, &MyForm::btnBet_Click);
 			// 
 			// txtPlayersHand
 			// 
@@ -276,6 +275,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnPlayAgain->TabIndex = 12;
 			this->btnPlayAgain->Text = L"PLAY AGAIN";
 			this->btnPlayAgain->UseVisualStyleBackColor = false;
+			this->btnPlayAgain->Click += gcnew System::EventHandler(this, &MyForm::btnPlayAgain_Click);
 			// 
 			// lblHitOrStay
 			// 
@@ -301,6 +301,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnHit->TabIndex = 14;
 			this->btnHit->Text = L"Hit";
 			this->btnHit->UseVisualStyleBackColor = false;
+			this->btnHit->Click += gcnew System::EventHandler(this, &MyForm::btnHit_Click);
 			// 
 			// btnStay
 			// 
@@ -314,6 +315,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnStay->TabIndex = 15;
 			this->btnStay->Text = L"Stay";
 			this->btnStay->UseVisualStyleBackColor = false;
+			this->btnStay->Click += gcnew System::EventHandler(this, &MyForm::btnStay_Click);
 			// 
 			// MyForm
 			// 
@@ -344,6 +346,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Diienno, King, Stewart-Tengco Project 6: Blackjack";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MyForm::MyForm_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->msRules->ResumeLayout(false);
 			this->msRules->PerformLayout();
@@ -353,7 +356,8 @@ namespace DiiennoKingStewartTengcoP6 {
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-
+		if (!mygame.IsLogOpened())
+			txtGameStatus->Text = "No log file is being written to. But we can still play the game.";
 	}
 	private: System::Void msFileRules_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ rules = "Rules of the game:";
@@ -374,6 +378,68 @@ namespace DiiennoKingStewartTengcoP6 {
 		about += "\r\n\nThis program is a game of Black Jack written in C++ with Windows CLI Forms.";
 
 		MessageBox::Show(about);
+	}
+	private: System::Void btnBet_Click(System::Object^ sender, System::EventArgs^ e) {
+		int bet{ 0 };
+		bet = Convert::ToInt32(txtBet->Text);
+		bool isBetValid{ false };
+		isBetValid = mygame.SetBet(bet);
+		if (isBetValid) {
+			mygame.InitialDeal();
+
+			txtPlayersHand->Text = gcnew String(mygame.ShowPlayerHand().c_str());
+			txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(true).c_str());
+
+			if (mygame.isBlackJack()) {
+				String^ results = "Black Jack!\r\n";
+				results += gcnew String(mygame.ShowResults().c_str());
+				txtGameStatus->Text = results;
+			}
+			else {
+				lblBet->Visible = false;
+				txtBet->Visible = false;
+				btnBet->Visible = false;
+				lblHitOrStay->Visible = true;
+				btnHit->Visible = true;
+				btnStay->Visible = true;
+			}
+		}
+		else {
+			txtGameStatus->Text = "Error: Bet is not valid. Please enter a valid bet.";
+		}
+	}
+	private: System::Void btnHit_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (mygame.PlayerContinues()) {
+			mygame.PlayerHits();
+			txtPlayersHand->Text = gcnew String(mygame.ShowPlayerHand().c_str());
+		}
+
+		if (mygame.PlayerBusted()) {
+			txtGameStatus->Text = "Your hand is busted.";
+		}
+	}
+	private: System::Void btnStay_Click(System::Object^ sender, System::EventArgs^ e) {
+		while (mygame.DealerContinues()) {
+			txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(true).c_str());
+		}
+		txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(false).c_str());
+		txtGameStatus->Text = gcnew String(mygame.ShowResults().c_str());
+	}
+	private: System::Void btnPlayAgain_Click(System::Object^ sender, System::EventArgs^ e) {
+		mygame.ClearHands();
+		lblBet->Visible = true;
+		txtBet->Visible = true;
+		btnBet->Visible = true;
+		lblHitOrStay->Visible = false;
+		btnHit->Visible = false;
+		btnStay->Visible = false;
+		txtPlayersHand->Text = "";
+		txtDealersHand->Text = "";
+		txtGameStatus->Text = "";
+	}
+	private: System::Void MyForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		mygame.EndGame();
+		Application::Exit();
 	}
 };
 }

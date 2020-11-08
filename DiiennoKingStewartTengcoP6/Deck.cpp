@@ -2,14 +2,14 @@
 #include<chrono>
 Deck::Deck()
 {
-	//seed the random_engine object
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::shuffle(this->cards.begin(), this->cards.end(), std::default_random_engine(seed));
 	topCard = 0;
     //initialize the cards from 0 to 52
     for (int i = 0; i < 52; i++) {
         cards[i] = i;
     }
+    // seed the random engine
+    unsigned seed = static_cast<unsigned>(chrono::system_clock::now().time_since_epoch().count());
+    std::shuffle(this->cards.begin(), this->cards.end(), std::default_random_engine(seed));
     //shuffle
     Shuffle();
 }

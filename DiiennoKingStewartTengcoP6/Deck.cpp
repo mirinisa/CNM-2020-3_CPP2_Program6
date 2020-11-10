@@ -1,3 +1,7 @@
+//Donald DiIenno ddiienno@cnm.edu
+//Program #6: Blackjack
+//Deck.cpp
+
 #include "Deck.h"
 #include<chrono>
 Deck::Deck()

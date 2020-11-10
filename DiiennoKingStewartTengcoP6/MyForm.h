@@ -432,10 +432,6 @@ namespace DiiennoKingStewartTengcoP6 {
 
 		if (mygame.PlayerBusted()) {
 			txtGameStatus->Text = "Your hand is busted.";
-			// disable bet/stay/hit buttons until Play Again is selected
-			btnBet->Enabled = false;
-			btnHit->Enabled = false;
-			btnStay->Enabled = false;
 		}
 	}
 	private: System::Void btnStay_Click(System::Object^ sender, System::EventArgs^ e) {

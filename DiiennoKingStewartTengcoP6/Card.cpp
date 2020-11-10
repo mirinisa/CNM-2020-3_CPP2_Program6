@@ -1,13 +1,8 @@
 //Donald DiIenno ddiienno@cnm.edu
 //Program #6: BlackJack
-// Card.cpp
+//Card.cpp
 
 #include "Card.h"
-
-Card::Card()
-{
-
-}
 
 // n is integer 0-51 corresponding to position
 // in the deck; calculate which card it is in
@@ -15,7 +10,7 @@ Card::Card()
 // face value/type and suit)
 Card::Card(int n)
 {
-	 int iSuit = n / 13;
+	int iSuit = n / 13;
 	iValue = n % 13 + 1;
 	if (iValue > 10) {
 		iValue = 10;
@@ -35,6 +30,7 @@ Card::Card(int n)
 	case 3:
 		suit = "Diamonds";
 	}
+
 	switch (iValue) {
 	case 0:
 		value = "Ace";
@@ -87,7 +83,5 @@ Card::Card(int n)
 		value = "King";
 		iValue = 13;
 		break;
-
 	}
-	
 }

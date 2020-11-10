@@ -57,15 +57,18 @@ string Game::PlayerWins()
 
 	// If the player's hand is a Black Jack,
 	if (playersHand.BlackJack())
+	{
 		winnings = 1.5 * bet;
+	}
 
 	// Add the winnings to money and increase wins by 1.
 	money += winnings;
-	wins += 1;
+	++wins;
 	// Return results string
 	stringstream ss;
-	ss << "Player wins: " << winnings
-		<< "\r\nPlayer now has $" << money;
+	ss << "Player wins!"
+		<< "\r\nYou just won $" << winnings
+		<< "\r\nYou now have: $" << money;
 	string ss_str = ss.str();
 	return ss_str;
 }
@@ -87,10 +90,11 @@ bool Game::DealerContinues()
 string Game::DealerWins()
 {
 	money -= bet;
-	losses += 1;
+	++losses;
 	stringstream ss;
-	ss << "Player loses: " << bet
-		<< "\r\nPlayer now has $" << money;
+	ss << "Dealer wins this round!"
+		<< "\r\nYou lost $" << bet
+		<< "\r\nYou now have: $" << money;
 	string ss_str = ss.str();
 	return ss_str;
 }
@@ -99,8 +103,8 @@ string Game::Tie()
 {
 	ties += 1;
 	stringstream ss;
-	ss << "tie"
-		<< "\r\nPlayer now has $" << money;
+	ss << "Tie"
+		<< "\r\nYou now have: $" << money;
 	string ss_str = ss.str();
 	return ss_str;
 }
@@ -108,18 +112,22 @@ string Game::Tie()
 string Game::ShowResults()
 {
 	string results;
-	if (playersHand.Busted() && dealersHand.Busted()) {
+	if (playersHand.Busted() && dealersHand.Busted()) 
+	{
 		results = Tie();
 	}
 	else if (playersHand.Busted()
-		|| playersHand.BestScore() < dealersHand.BestScore()) {
+		|| (playersHand.BestScore() < dealersHand.BestScore()) ) 
+	{
 		results = DealerWins();
 	}
 	else if (dealersHand.Busted()
-		|| playersHand.BestScore() >= dealersHand.BestScore()) {
+		|| (playersHand.BestScore() >= dealersHand.BestScore()) ) 
+	{
 		results = PlayerWins();
 	}
-	else {
+	else 
+	{
 		return "";
 	}
 	log.WriteLog(results);

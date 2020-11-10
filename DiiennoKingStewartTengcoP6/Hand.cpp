@@ -27,13 +27,13 @@ void Hand::AddCard(Card c)
 // put either Dealer: or Player: at beginning
 // of the string, then add cards held to string
 // if hideFirstCard is true, then first card is hidden
-string Hand::Show(bool isdealer, bool hideFirstCard)
+string Hand::Show(bool isDealer, bool hideFirstCard)
 {
 	stringstream ss;
 	// index in array of card to be added
 	int currentCard{ 0 };
 
-	if (isdealer)
+	if (isDealer)
 	{
 		// player ID
 		ss << "Dealer: ";
@@ -57,60 +57,17 @@ string Hand::Show(bool isdealer, bool hideFirstCard)
 		ss << "\r\n" << (currentCard + 1) << ". " << cards[currentCard].GetValue();
 		
 		// add suit of card
-		string suit = cards[currentCard].GetSuit();
-		if (suit == "S")
-		{
-			ss << " of Spades";
-		}
-		else
-		{
-			if (suit == "H")
-			{
-				ss << " of Hearts";
-			}
-			else 
-			{
-				if (suit == "C")
-				{
-					ss << " of Clubs";
-				}
-				else
-				{
-					ss << " of Diamonds";
-				}
-			}
-		}
+		ss << " of " << cards[currentCard].GetSuit();
 	}
 
-	ss << "\r\nBest score: " << BestScore();
-	ss << "\r\nBlackjack: ";
-	if (BlackJack())
+	// Shows best score if not the dealer
+	// mainly for debugging purposes, but also
+	// helpful for calculating the game
+	if (!isDealer)
 	{
-		ss << "True";
+		ss << "\r\nBest score: " << BestScore();
 	}
-	else
-	{
-		ss << "False";
-	}
-	int scoreToTest = 15;
-	ss << "\r\nUnder " << scoreToTest << ": ";
-	if (Under(scoreToTest))
-	{
-		ss << "True";
-	}
-	else
-	{
-		ss << "False";
-	}
-	ss << "\r\nMust hit: ";
-	if (MustHit())
-	{
-		ss << "True";
-	}
-	else
-	{
-		ss << "False";
-	}
+	
 
 	showHand = ss.str();
 	return showHand;
@@ -122,14 +79,10 @@ string Hand::Show(bool isdealer, bool hideFirstCard)
 // on first turn)
 bool Hand::BlackJack()
 {
-	// check if hand only has 2 cards
-	if (numCards == 2)
+	// if hand has only 2 cards and score is 21, hand is Blackjack
+	if (numCards == 2 && BestScore() == 21)
 	{
-		// if score is 21, yes, player has Blackjack
-		if (BestScore() == 21)
-		{
-			return true;
-		}
+		return true;
 	}
 	
 	// if more than 2 cards in hand,
@@ -227,6 +180,12 @@ bool Hand::Busted()
 	return (BestScore() > 21);
 }
 
+// overloaded method that tests if a specific 
+// score is busted (called in BestScore)
+bool Hand::Busted(int score)
+{
+	return (score > 21);
+}
 
 // delete all cards, reset showHand string
 // and set number of cards to 0
@@ -236,12 +195,4 @@ void Hand::ClearHand()
 	showHand = "";
 	// reset number of cards
 	numCards = 0;
-}
-
-
-// overloaded method that tests if a specific 
-// score is busted (called in BestScore)
-bool Hand::Busted(int score)
-{
-	return (score > 21);
 }

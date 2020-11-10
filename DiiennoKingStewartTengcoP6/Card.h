@@ -7,11 +7,11 @@ using namespace std;
 class Card
 {
 public:
-	Card();
+	Card() = default;
 	Card(int n);
 	void SetIValue(int val) { iValue = val; } // Set points value
-	string GetValue() const { return value; } // Get face value
 	int GetIValue() const { return iValue; } // Get points value
+	string GetValue() const { return value; } // Get face value
 	string GetSuit() const { return suit; }
 private:
 	int iValue; // int points value

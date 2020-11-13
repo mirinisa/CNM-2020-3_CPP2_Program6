@@ -4,7 +4,7 @@
  *
  * File: Hand.h
  * Purpose: Construct a hand of cards (header file)
- * Last modified: 3 Nov 2020
+ * Last modified: 12 Nov 2020
  */
 
 #ifndef _HAND_H
@@ -34,7 +34,6 @@ private:
 	int numCards{ 0 };
 	string showHand;
 	array<Card, MAX_CARDS> cards;
-	//int SumPoints(); // adds points in hand, always aces = 1
 };
 
 #endif /* _HAND_H */

@@ -1,4 +1,4 @@
-//Donald DiIenno ddiienno@cnm.edu
+//Donald DiIenno ddiienno@cnm.edu & Sean King cking66@cnm.edu
 //Program #6: Blackjack
 //Deck.cpp
 

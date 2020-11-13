@@ -20,7 +20,6 @@ Logger::Logger()
 {
 	// create log file name from date & time
 	FileName();
-	filename = "Log_" + dateTimeRightNow + ".txt";
 	// find time right now
 	Time();
 
@@ -48,9 +47,9 @@ Logger::Logger()
 // called when a game is started
 void Logger::StartLog(double initialBalance)
 {
-	output << endl << endl << "New round started!";
 	// add user's initial balance
-	output << endl << "Player's starting balance: $" << initialBalance;
+	output << endl << "Player's starting balance: $" << initialBalance
+		<< endl;
 
 }
 
@@ -59,7 +58,9 @@ void Logger::WriteLog(string s)
 {
 	Time();
 	// write time right now
-	output << endl << endl << "Time: " << timeRightNow;
+	output << endl 
+		<< endl << "--------------------" 
+		<< endl << "This round ended at: " << timeRightNow;
 	// write string
 	output << endl << s;
 }
@@ -99,4 +100,5 @@ void Logger::FileName()
 	dateTimeRightNow = ss.str();
 
 	// set filename
+	filename = "Log_" + dateTimeRightNow + ".txt";
 }

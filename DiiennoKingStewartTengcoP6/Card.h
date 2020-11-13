@@ -1,3 +1,13 @@
+/* Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
+ * CIS 2275-R01: C++ 2 Fall 2020
+ * Project: Program 6, Blackjack
+ *
+ * File: Card.h
+ * Purpose: Header file for Card object
+ * Last modified: 12 Nov 2020
+ */
+
+
 #ifndef _CARD_H
 #define _CARD_H
 

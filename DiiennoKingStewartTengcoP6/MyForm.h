@@ -6,7 +6,7 @@
  * Project: Program 6, Blackjack
  * 
  * File: MyForm.h
- * Last modified: 5 Nov 2020
+ * Last modified: 12 Nov 2020
 */
 
 

@@ -1,4 +1,4 @@
-//Donald DiIenno ddiienno@cnm.edu
+//Donald DiIenno ddiienno@cnm.edu & Mirinisa Stewart-Tengco mstewarttengco@cnm.edu
 //Program #6: BlackJack
 //Card.cpp
 

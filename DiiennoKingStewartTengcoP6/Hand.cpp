@@ -4,7 +4,7 @@
  * 
  * File: Hand.cpp
  * Purpose: Construct a hand of cards
- * Last modified: 5 Nov 2020
+ * Last modified: 12 Nov 2020
  */
 
 
@@ -35,19 +35,12 @@ string Hand::Show(bool isDealer, bool hideFirstCard)
 
 	if (isDealer)
 	{
-		// player ID
-		ss << "Dealer: ";
 		// first card value if hidden
 		if (hideFirstCard)
 		{
 			ss << "\r\n1. Hidden";
 			++currentCard;
 		}
-	}
-	else
-	{
-		// player ID
-		ss << "Player: ";
 	}
 
 	// go through cards array
@@ -58,9 +51,6 @@ string Hand::Show(bool isDealer, bool hideFirstCard)
 		
 		// add suit of card
 		ss << " of " << cards[currentCard].GetSuit();
-
-		// testing: add points value
-		ss << " (" << cards[currentCard].GetIValue() << ")";
 	}
 
 	// Shows best score if not the dealer
@@ -69,8 +59,11 @@ string Hand::Show(bool isDealer, bool hideFirstCard)
 	if (!isDealer)
 	{
 		ss << "\r\nBest score: " << BestScore();
+		if (Busted())
+		{
+			ss << ". YOU BUSTED!";
+		}
 	}
-	
 
 	showHand = ss.str();
 	return showHand;
@@ -79,7 +72,7 @@ string Hand::Show(bool isDealer, bool hideFirstCard)
 
 // "blackjack" is achieved if hand has a total points
 // value of 21 with only 2 cards (points value of 21
-// on first turn)
+// on first turn, i.e. Ace + a face card)
 bool Hand::BlackJack()
 {
 	// if hand has only 2 cards and score is 21, hand is Blackjack
@@ -88,8 +81,8 @@ bool Hand::BlackJack()
 		return true;
 	}
 	
-	// if more than 2 cards in hand,
-	// or hand total is not 21, no Blackjack
+	// if more than 2 cards in hand, or
+	// hand total is not 21, no Blackjack
 	return false;
 }
 

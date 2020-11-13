@@ -1,3 +1,13 @@
+/* Mirinisa Stewart-Tengco mstewarttengco@cnm.edu & Sean King cking66@cnm.edu
+ * CIS 2275-R01: C++ 2 Fall 2020
+ * Project: Program 6, Blackjack
+ *
+ * File: Game.h
+ * Purpose: Header file for Game object
+ * Last modified: 5 Nov 2020
+ */
+
+
 #include "Deck.h"
 #include "Hand.h"
 #include "Logger.h"
@@ -19,7 +29,7 @@ public:
 	bool PlayerContinues();
 	void PlayerHits();
 	string PlayerWins();
-	bool DealerContinues();
+	bool DealerContinues(); // Dealer has less than 17 points
 	string DealerWins();
 	string Tie(); // no one wins, no one loses money
 	string ShowResults();

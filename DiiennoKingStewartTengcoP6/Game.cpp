@@ -1,4 +1,10 @@
+//Sean King cking66@cnm.edu
+//Program 6: Blackjack
+//Game.cpp
+
+
 #include "Game.h"
+#include <iomanip>
 
 Game::Game()
 {
@@ -67,10 +73,9 @@ string Game::PlayerWins()
 	// Return results string
 	stringstream ss;
 	ss << "Player wins!"
-		<< "\r\nYou just won $" << winnings
-		<< "\r\nYou now have: $" << money;
-	string ss_str = ss.str();
-	return ss_str;
+		<< "\r\nYou just won $" << setprecision(2) << fixed << winnings
+		<< "\r\nYou now have: $" << setprecision(2) << fixed << money;
+	return ss.str();
 }
 
 bool Game::DealerContinues()
@@ -93,27 +98,30 @@ string Game::DealerWins()
 	++losses;
 	stringstream ss;
 	ss << "Dealer wins this round!"
-		<< "\r\nYou lost $" << bet
-		<< "\r\nYou now have: $" << money;
-	string ss_str = ss.str();
-	return ss_str;
+		<< "\r\nYou lost $" << setprecision(2) << fixed << bet
+		<< "\r\nYou now have: $" << setprecision(2) << fixed << money;
+	return ss.str();
 }
 
 string Game::Tie()
 {
 	ties += 1;
 	stringstream ss;
-	ss << "Tie"
-		<< "\r\nYou now have: $" << money;
-	string ss_str = ss.str();
-	return ss_str;
+	ss << "Tied."
+		<< "\r\nYou have: $" << setprecision(2) << fixed << money;
+	return ss.str();
 }
 
 string Game::ShowResults()
 {
 	string results;
 	// both player and dealer bust, or scores are equal
-	if (playersHand.Busted() && dealersHand.Busted() || (playersHand.BestScore() == dealersHand.BestScore())) 
+	// According to several different websites, if the
+	// dealer and player have the same score, then no
+	// money changes hands and it is essentially a tie
+	// (that is, PlayerWins() should not be called)
+	if (playersHand.Busted() && dealersHand.Busted() 
+		|| (playersHand.BestScore() == dealersHand.BestScore())) 
 	{
 		results = Tie();
 	}
@@ -141,7 +149,12 @@ string Game::ShowResults()
 	{
 		return "Error, no results.";
 	}
-	log.WriteLog(results);
+
+	// only write to log if it's open
+	if (IsLogOpened())
+	{
+		log.WriteLog(results);
+	}
 	return results;
 }
 
@@ -154,10 +167,32 @@ void Game::ClearHands()
 void Game::EndGame()
 {
 	stringstream ss;
-	ss << "Player wins: " << wins
-		<< "\nDealer wins: " << losses
+	ss << "\n\n\n-----------GAME OVER------------"
+		<< "\nPlayer's wins: " << wins
+		<< "\nDealer's wins: " << losses
 		<< "\nTies: " << ties
-		<< "\nNumber of hands: " << numberOfHands;
+		<< "\nRounds played: " << (numberOfHands/2);
+
+	// report how much money player won/lost
+	double winnings = money - 1000;
+	if (winnings > 0) 
+	{
+		ss << "\nYou won $" << setprecision(2) << fixed << winnings << " this game.";
+	}
+	else if (winnings < 0)
+	{
+		ss << "\nYou lost $" << setprecision(2) << fixed << (winnings * -1) << " this game.";
+	}
+	else
+	{
+		ss << "\nYou didn't win or lose any money.";
+	}
+	
 	string summary = ss.str();
-	log.CloseLog(summary);
+	
+	// only write to log if it's open
+	if (IsLogOpened())
+	{
+		log.CloseLog(summary);
+	}
 }

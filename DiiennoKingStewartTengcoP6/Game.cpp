@@ -112,23 +112,34 @@ string Game::Tie()
 string Game::ShowResults()
 {
 	string results;
-	if (playersHand.Busted() && dealersHand.Busted()) 
+	// both player and dealer bust, or scores are equal
+	if (playersHand.Busted() && dealersHand.Busted() || (playersHand.BestScore() == dealersHand.BestScore())) 
 	{
 		results = Tie();
 	}
-	else if (playersHand.Busted()
-		|| (playersHand.BestScore() < dealersHand.BestScore()) ) 
+	// only player busts
+	else if (playersHand.Busted()) 
 	{
 		results = DealerWins();
 	}
-	else if (dealersHand.Busted()
-		|| (playersHand.BestScore() >= dealersHand.BestScore()) ) 
+	// only dealer busts
+	else if (dealersHand.Busted() ) 
+	{
+		results = PlayerWins();
+	}
+	// neither busts and dealer wins
+	else if (playersHand.BestScore() < dealersHand.BestScore())
+	{
+		results = DealerWins();
+	}
+	// neither busts and player wins
+	else if (playersHand.BestScore() > dealersHand.BestScore())
 	{
 		results = PlayerWins();
 	}
 	else 
 	{
-		return "";
+		return "Error, no results.";
 	}
 	log.WriteLog(results);
 	return results;

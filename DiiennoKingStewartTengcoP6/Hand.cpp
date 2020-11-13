@@ -58,6 +58,9 @@ string Hand::Show(bool isDealer, bool hideFirstCard)
 		
 		// add suit of card
 		ss << " of " << cards[currentCard].GetSuit();
+
+		// testing: add points value
+		ss << " (" << cards[currentCard].GetIValue() << ")";
 	}
 
 	// Shows best score if not the dealer

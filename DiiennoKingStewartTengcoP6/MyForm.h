@@ -73,6 +73,9 @@ namespace DiiennoKingStewartTengcoP6 {
 	private: System::Windows::Forms::Button^ btnHit;
 	private: System::Windows::Forms::Button^ btnStay;
 
+	private: System::Windows::Forms::GroupBox^ groupBet;
+
+
 
 	protected:
 
@@ -112,7 +115,9 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->lblHitOrStay = (gcnew System::Windows::Forms::Label());
 			this->btnHit = (gcnew System::Windows::Forms::Button());
 			this->btnStay = (gcnew System::Windows::Forms::Button());
+			this->groupBet = (gcnew System::Windows::Forms::GroupBox());
 			this->msRules->SuspendLayout();
+			this->groupBet->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// msRules
@@ -148,7 +153,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->lblWelcome->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 16.1194F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblWelcome->ForeColor = System::Drawing::Color::White;
-			this->lblWelcome->Location = System::Drawing::Point(67, 52);
+			this->lblWelcome->Location = System::Drawing::Point(67, 46);
 			this->lblWelcome->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblWelcome->Name = L"lblWelcome";
 			this->lblWelcome->Size = System::Drawing::Size(623, 87);
@@ -163,7 +168,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->lblBet->BackColor = System::Drawing::Color::Transparent;
 			this->lblBet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.97015F, System::Drawing::FontStyle::Bold));
 			this->lblBet->ForeColor = System::Drawing::Color::White;
-			this->lblBet->Location = System::Drawing::Point(67, 171);
+			this->lblBet->Location = System::Drawing::Point(5, 24);
 			this->lblBet->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblBet->Name = L"lblBet";
 			this->lblBet->Size = System::Drawing::Size(197, 24);
@@ -172,10 +177,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			// txtBet
 			// 
-			this->txtBet->Location = System::Drawing::Point(287, 173);
-			this->txtBet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtBet->Location = System::Drawing::Point(206, 24);
+			this->txtBet->Margin = System::Windows::Forms::Padding(2);
 			this->txtBet->Name = L"txtBet";
-			this->txtBet->Size = System::Drawing::Size(254, 28);
+			this->txtBet->Size = System::Drawing::Size(71, 28);
 			this->txtBet->TabIndex = 4;
 			this->txtBet->Text = L"0";
 			// 
@@ -185,10 +190,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnBet->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 16.1194F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnBet->ForeColor = System::Drawing::Color::White;
-			this->btnBet->Location = System::Drawing::Point(588, 165);
-			this->btnBet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnBet->Location = System::Drawing::Point(291, 19);
+			this->btnBet->Margin = System::Windows::Forms::Padding(2);
 			this->btnBet->Name = L"btnBet";
-			this->btnBet->Size = System::Drawing::Size(85, 42);
+			this->btnBet->Size = System::Drawing::Size(114, 37);
 			this->btnBet->TabIndex = 5;
 			this->btnBet->Text = L"BET";
 			this->btnBet->UseVisualStyleBackColor = false;
@@ -198,7 +203,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			this->txtPlayersHand->BackColor = System::Drawing::Color::White;
 			this->txtPlayersHand->Location = System::Drawing::Point(72, 234);
-			this->txtPlayersHand->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPlayersHand->Margin = System::Windows::Forms::Padding(2);
 			this->txtPlayersHand->Multiline = true;
 			this->txtPlayersHand->Name = L"txtPlayersHand";
 			this->txtPlayersHand->ReadOnly = true;
@@ -238,7 +243,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			this->txtDealersHand->BackColor = System::Drawing::Color::White;
 			this->txtDealersHand->Location = System::Drawing::Point(72, 395);
-			this->txtDealersHand->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtDealersHand->Margin = System::Windows::Forms::Padding(2);
 			this->txtDealersHand->Multiline = true;
 			this->txtDealersHand->Name = L"txtDealersHand";
 			this->txtDealersHand->ReadOnly = true;
@@ -250,7 +255,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			// 
 			this->txtGameStatus->BackColor = System::Drawing::Color::White;
 			this->txtGameStatus->Location = System::Drawing::Point(417, 395);
-			this->txtGameStatus->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtGameStatus->Margin = System::Windows::Forms::Padding(2);
 			this->txtGameStatus->Multiline = true;
 			this->txtGameStatus->Name = L"txtGameStatus";
 			this->txtGameStatus->ReadOnly = true;
@@ -278,8 +283,8 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnPlayAgain->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 16.1194F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnPlayAgain->ForeColor = System::Drawing::Color::White;
-			this->btnPlayAgain->Location = System::Drawing::Point(417, 313);
-			this->btnPlayAgain->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnPlayAgain->Location = System::Drawing::Point(417, 314);
+			this->btnPlayAgain->Margin = System::Windows::Forms::Padding(2);
 			this->btnPlayAgain->Name = L"btnPlayAgain";
 			this->btnPlayAgain->Size = System::Drawing::Size(256, 38);
 			this->btnPlayAgain->TabIndex = 12;
@@ -293,7 +298,7 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->lblHitOrStay->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 13.97015F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblHitOrStay->ForeColor = System::Drawing::Color::White;
-			this->lblHitOrStay->Location = System::Drawing::Point(413, 225);
+			this->lblHitOrStay->Location = System::Drawing::Point(482, 234);
 			this->lblHitOrStay->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblHitOrStay->Name = L"lblHitOrStay";
 			this->lblHitOrStay->Size = System::Drawing::Size(115, 25);
@@ -306,8 +311,8 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnHit->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 16.1194F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnHit->ForeColor = System::Drawing::Color::White;
-			this->btnHit->Location = System::Drawing::Point(417, 258);
-			this->btnHit->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnHit->Location = System::Drawing::Point(417, 261);
+			this->btnHit->Margin = System::Windows::Forms::Padding(2);
 			this->btnHit->Name = L"btnHit";
 			this->btnHit->Size = System::Drawing::Size(123, 38);
 			this->btnHit->TabIndex = 14;
@@ -321,14 +326,25 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->btnStay->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 16.1194F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnStay->ForeColor = System::Drawing::Color::White;
-			this->btnStay->Location = System::Drawing::Point(550, 258);
-			this->btnStay->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnStay->Location = System::Drawing::Point(544, 261);
+			this->btnStay->Margin = System::Windows::Forms::Padding(2);
 			this->btnStay->Name = L"btnStay";
 			this->btnStay->Size = System::Drawing::Size(123, 38);
 			this->btnStay->TabIndex = 15;
 			this->btnStay->Text = L"Stay";
 			this->btnStay->UseVisualStyleBackColor = false;
 			this->btnStay->Click += gcnew System::EventHandler(this, &MyForm::btnStay_Click);
+			// 
+			// groupBet
+			// 
+			this->groupBet->Controls->Add(this->lblBet);
+			this->groupBet->Controls->Add(this->txtBet);
+			this->groupBet->Controls->Add(this->btnBet);
+			this->groupBet->Location = System::Drawing::Point(72, 136);
+			this->groupBet->Name = L"groupBet";
+			this->groupBet->Size = System::Drawing::Size(422, 64);
+			this->groupBet->TabIndex = 17;
+			this->groupBet->TabStop = false;
 			// 
 			// MyForm
 			// 
@@ -337,9 +353,10 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->AutoSize = true;
 			this->BackColor = System::Drawing::Color::OliveDrab;
 			this->ClientSize = System::Drawing::Size(740, 542);
-			this->Controls->Add(this->btnStay);
-			this->Controls->Add(this->btnHit);
 			this->Controls->Add(this->lblHitOrStay);
+			this->Controls->Add(this->groupBet);
+			this->Controls->Add(this->btnHit);
+			this->Controls->Add(this->btnStay);
 			this->Controls->Add(this->btnPlayAgain);
 			this->Controls->Add(this->lblGameStatus);
 			this->Controls->Add(this->txtGameStatus);
@@ -347,9 +364,6 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->Controls->Add(this->lblDealersHand);
 			this->Controls->Add(this->lblPlayersHand);
 			this->Controls->Add(this->txtPlayersHand);
-			this->Controls->Add(this->btnBet);
-			this->Controls->Add(this->txtBet);
-			this->Controls->Add(this->lblBet);
 			this->Controls->Add(this->lblWelcome);
 			this->Controls->Add(this->msRules);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft New Tai Lue", 11.8209F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -363,6 +377,8 @@ namespace DiiennoKingStewartTengcoP6 {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->msRules->ResumeLayout(false);
 			this->msRules->PerformLayout();
+			this->groupBet->ResumeLayout(false);
+			this->groupBet->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -410,9 +426,10 @@ namespace DiiennoKingStewartTengcoP6 {
 				
 			}
 			else {
-				lblBet->Visible = false;
+				groupBet->Visible = false;
+				/*lblBet->Visible = false;
 				txtBet->Visible = false;
-				btnBet->Visible = false;
+				btnBet->Visible = false;*/
 				lblHitOrStay->Visible = true;
 				btnHit->Visible = true;
 				btnHit->Enabled = true;
@@ -425,35 +442,60 @@ namespace DiiennoKingStewartTengcoP6 {
 		}
 	}
 	private: System::Void btnHit_Click(System::Object^ sender, System::EventArgs^ e) {
+		// if not busted, allow Player to be dealt another card
 		if (mygame.PlayerContinues()) {
 			mygame.PlayerHits();
+			// update Player's info box
 			txtPlayersHand->Text = gcnew String(mygame.ShowPlayerHand().c_str());
 		}
 
+		// if busted, report in game status
 		if (mygame.PlayerBusted()) {
-			txtGameStatus->Text = "Your hand is busted.";
+			txtGameStatus->Text = "Your hand is busted.\r\n";
+			// proceed as though the Player had asked to stay
+			// disable bet/stay/hit buttons until Play Again is selected
+			lblHitOrStay->Visible = false;
+			btnHit->Visible = false;
+			btnStay->Visible = false;
+
+			// add cards to Dealer's hand if necessary
+			while (mygame.DealerContinues()) {
+				txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(true).c_str());
+			}
+			// update Dealer's info box
+			txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(false).c_str());
+			// update game status
+			txtGameStatus->Text = gcnew String(mygame.ShowResults().c_str());
+			// make Play Again button visible
+			btnPlayAgain->Visible = true;
 		}
 	}
 	private: System::Void btnStay_Click(System::Object^ sender, System::EventArgs^ e) {
 		// disable bet/stay/hit buttons until Play Again is selected
-		btnBet->Enabled = false;
-		btnHit->Enabled = false;
-		btnStay->Enabled = false;
+		lblHitOrStay->Visible = false;
+		btnHit->Visible = false;
+		btnStay->Visible = false;
+
+		// add cards to Dealer's hand if necessary
 		while (mygame.DealerContinues()) {
 			txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(true).c_str());
 		}
+		// update Dealer's info box
 		txtDealersHand->Text = gcnew String(mygame.ShowDealersHand(false).c_str());
+		// update game status
 		txtGameStatus->Text = gcnew String(mygame.ShowResults().c_str());
+		// make Play Again button visible
+		btnPlayAgain->Visible = true;
 	}
 	private: System::Void btnPlayAgain_Click(System::Object^ sender, System::EventArgs^ e) {
 		mygame.ClearHands();
 		lblBet->Visible = true;
-		txtBet->Visible = true;
-		btnBet->Visible = true;
-		btnBet->Enabled = true;
+		groupBet->Visible = true;
 		lblHitOrStay->Visible = false;
 		btnHit->Visible = false;
 		btnStay->Visible = false;
+
+		btnPlayAgain->Visible = false;
 		txtPlayersHand->Text = "";
 		txtDealersHand->Text = "";
 		txtGameStatus->Text = "";

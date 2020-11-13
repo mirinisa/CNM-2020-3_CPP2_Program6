@@ -10,11 +10,8 @@
 // face value/type and suit)
 Card::Card(int n)
 {
+	// gives 0-3
 	int iSuit = n / 13;
-	iValue = n % 13 + 1;
-	if (iValue > 10) {
-		iValue = 10;
-	}
 	
 	switch (iSuit)
 	{
@@ -31,57 +28,53 @@ Card::Card(int n)
 		suit = "Diamonds";
 	}
 
+	// gives 1-13
+	iValue = n % 13 + 1;
+
+	// give face cards a name and change
+	// Jack-King iValue to 10
 	switch (iValue) {
-	case 0:
+	case 1:
 		value = "Ace";
 		break;
-	case 1:
-		value = "Two";
-		iValue = 2;
-		break;
 	case 2:
-		value = "Three";
-		iValue = 3;
+		value = "Two";
 		break;
 	case 3:
-		value = "Four";
-		iValue = 4;
+		value = "Three";
 		break;
 	case 4:
-		value = "Five";
-		iValue = 5;
+		value = "Four";
 		break;
 	case 5:
-		value = "Six";
-		iValue = 6;
+		value = "Five";
 		break;
 	case 6:
-		value = "Seven";
-		iValue = 7;
+		value = "Six";
 		break;
 	case 7:
-		value = "Eight";
-		iValue = 8;
+		value = "Seven";
 		break;
 	case 8:
-		value = "Nine";
-		iValue = 9;
+		value = "Eight";
 		break;
 	case 9:
-		value = "Ten";
-		iValue = 10;
+		value = "Nine";
 		break;
 	case 10:
-		value = "Jack";
-		iValue = 11;
+		value = "Ten";
 		break;
 	case 11:
-		value = "Queen";
-		iValue = 12;
+		value = "Jack";
+		iValue = 10;
 		break;
 	case 12:
+		value = "Queen";
+		iValue = 10;
+		break;
+	case 13:
 		value = "King";
-		iValue = 13;
+		iValue = 10;
 		break;
 	}
 }
